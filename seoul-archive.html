@@ -7,7 +7,7 @@
    yellow riverside expressways, teardrop pins. Single light theme by design — it imitates a paper-light street map. */
 :root{
   --land:#efede8; --land-out:#e4e1d9; --gu:#f1efea; --gu-line:#b9aecb;
-  --water:#a9d3f1; --water-line:#93c4e8; --park:#d3e9c6; --hill:#e1edd6; --park-ink:#3f7f33; --hill-ink:#6b8a5c;
+  --water:#a9d3f1; --water-line:#93c4e8; --park:#c9e4b8; --hill:#d8e8ca; --park-ink:#3f7f33; --hill-ink:#6b8a5c;
   --road:#ffffff; --road-case:#d3ccbf; --expy:#ffe8a3; --expy-case:#efc95a;
   --bg:#ffffff; --field:#efede8; --ink:#1e1e1e; --mute:#767676; --faint:#a3a3a3; --line:#e7e7e7; --soft:#f6f6f6;
   --green:#03c75a; --green-ink:#00a24a; --river:#a9d3f1;
@@ -38,7 +38,7 @@ h1 small{font:400 12px/1 var(--body);color:var(--mute);letter-spacing:0;margin-l
 #map{width:100%;height:100%;display:block;cursor:grab;outline:none}#map:focus-visible{box-shadow:inset 0 0 0 2px var(--green)}
 #map.drag{cursor:grabbing}
 .guarea{fill:var(--gu);stroke:var(--gu-line);stroke-width:1;stroke-dasharray:4 3;vector-effect:non-scaling-stroke}
-.hill{fill:var(--hill)}.park{fill:var(--park)}.water{fill:var(--water);stroke:var(--water-line);stroke-width:.6;vector-effect:non-scaling-stroke}
+.hill{fill:var(--hill)}.park{fill:var(--park)}.pp{stroke-width:.8;vector-effect:non-scaling-stroke}.pp.wood{fill:var(--hill);stroke:#c4dab3}.pp.park{fill:var(--park);stroke:#afd398}.pp.palace{fill:#dfe5c6;stroke:#c3cba2}.water{fill:var(--water);stroke:var(--water-line);stroke-width:.6;vector-effect:non-scaling-stroke}
 .expy{fill:none;stroke-linejoin:round;stroke-linecap:round}.expy.case{stroke:var(--expy-case)}.expy.fill{stroke:var(--expy)}
 .river{fill:none;stroke:var(--water);stroke-linejoin:round;stroke-linecap:round}
 .island{fill:var(--park);stroke:var(--water-line);stroke-width:.6;vector-effect:non-scaling-stroke}
@@ -224,8 +224,13 @@ const smooth=(pts,close)=>{ // Catmull-Rom → cubic bezier, in map units
 const base=el("g",{id:"base"});world.appendChild(base);
 // district fills (real KOSTAT boundaries) — the Han runs along gu borders, so water draws on top
 B.guPoly.forEach(g=>base.appendChild(el("path",{d:path(g[2],true),class:"guarea"})));
-{const hg=el("g",{filter:"url(#soft)"});B.parks.filter(k=>k.kind==="hill").forEach(k=>{const q=P(k.c[0],k.c[1]);hg.appendChild(el("circle",{cx:q.x,cy:q.y,r:k.r,class:"hill"}));});base.appendChild(hg);}
-B.parks.filter(k=>!k.kind).forEach(k=>{const q=P(k.c[0],k.c[1]);base.appendChild(el("circle",{cx:q.x,cy:q.y,r:k.r,class:"park"}));});
+// real outlines (OSM) where we have them; soft blobs only for peaks OSM maps as a single point
+const PP=Object.fromEntries((B.parkPoly||[]).map(p=>[p[0],p]));
+const ppCentre=r=>{let A=0,X=0,Y=0;for(let i=0;i<r.length-1;i++){const [y0,x0]=r[i],[y1,x1]=r[i+1];const k=x0*y1-x1*y0;A+=k;X+=(x0+x1)*k;Y+=(y0+y1)*k;}return A?[Y/(3*A),X/(3*A)]:r[0];};
+const ppArea=r=>{let A=0;for(let i=0;i<r.length-1;i++)A+=r[i][1]*r[i+1][0]-r[i+1][1]*r[i][0];return Math.abs(A);};
+{const hg=el("g",{filter:"url(#soft)"});B.parks.filter(k=>k.kind==="hill"&&!PP[k.n]).forEach(k=>{const q=P(k.c[0],k.c[1]);hg.appendChild(el("circle",{cx:q.x,cy:q.y,r:k.r*0.8,class:"hill"}));});base.appendChild(hg);}
+["wood","park","palace"].forEach(kd=>(B.parkPoly||[]).filter(p=>p[1]===kd).forEach(p=>p[2].forEach(r=>base.appendChild(el("path",{d:path(r,true),class:"pp "+kd})))));
+B.parks.filter(k=>!k.kind&&!PP[k.n]).forEach(k=>{const q=P(k.c[0],k.c[1]);base.appendChild(el("circle",{cx:q.x,cy:q.y,r:k.r*0.7,class:"park"}));});
 B.streams.forEach(st=>base.appendChild(el("path",{d:smooth(st.p),class:"stream","stroke-width":1.2})));
 // riverside expressways (Olympic-daero south bank, Gangbyeon-bukro north bank) as yellow bands hugging the water
 base.appendChild(el("path",{d:smooth(B.han),class:"expy case","stroke-width":B.hanWidth+3.4}));
@@ -233,7 +238,8 @@ base.appendChild(el("path",{d:smooth(B.han),class:"expy fill","stroke-width":B.h
 base.appendChild(el("path",{d:smooth(B.han),class:"river","stroke-width":B.hanWidth}));
 base.appendChild(el("path",{d:smooth(B.saetgang),class:"stream","stroke-width":1.6}));
 base.appendChild(el("path",{d:smooth(B.yeouido,true),class:"guarea",style:"stroke:var(--water-line);stroke-dasharray:none"}));base.appendChild(el("path",{d:path(B.bamseom,true),class:"island"}));
-B.parks.filter(k=>k.kind==="water").forEach(k=>{const q=P(k.c[0],k.c[1]);base.appendChild(el("circle",{cx:q.x,cy:q.y,r:k.r,class:"water"}));});
+(B.parkPoly||[]).filter(p=>p[1]==="water").forEach(p=>p[2].forEach(r=>base.appendChild(el("path",{d:path(r,true),class:"water"}))));
+B.parks.filter(k=>k.kind==="water"&&!PP[k.n]).forEach(k=>{const q=P(k.c[0],k.c[1]);base.appendChild(el("circle",{cx:q.x,cy:q.y,r:k.r,class:"water"}));});
 // a few major arterials (hand-placed, approximate) — visible from zoom 1
 const ROADS=[["Teheran-ro",[[37.4979,127.0276],[37.5006,127.0364],[37.5045,127.0490],[37.5088,127.0631]]],
  ["Gangnam-daero",[[37.5163,127.0203],[37.5045,127.0245],[37.4979,127.0276],[37.4840,127.0346]]],
@@ -260,7 +266,8 @@ B.guPoly.forEach(g=>{let c=guAt[g[0]];if(!c){let A=0,X=0,Y=0;const r=g[2];for(le
   const q=P(c[0],c[1]);const t=el("text",{x:q.x,y:q.y,class:"lbl gu","text-anchor":"middle"},g[0].replace(/-gu$/,""));const ko=el("tspan",{class:"ko",dx:"4"},g[1]);t.appendChild(ko);lblG.appendChild(t);});
 const stNames=new Set(B.lines.flatMap(L=>L.s.map(x=>x[0])));
 B.hoods.forEach(l=>{const q=P(l[1],l[2]);if(stNames.has(l[0]))return;if(PL.some(p=>!p.jeju&&Math.hypot(P(p.lat,p.lng).x-q.x,P(p.lat,p.lng).y-q.y)<4.5))return;lblG.appendChild(el("text",{x:q.x,y:q.y,class:"lbl hood","text-anchor":"middle"},l[0]));});
-B.parks.forEach(k=>{const q=P(k.c[0],k.c[1]);lblG.appendChild(el("text",{x:q.x,y:q.y+(k.kind==="hill"?0:k.r+1.5),class:"lbl "+(k.kind==="hill"?"hilllbl":"parklbl"),"text-anchor":"middle"},k.n));});
+{const seen=new Set();B.parks.forEach(k=>{seen.add(k.n);const pp=PP[k.n];let c=k.c,dy=k.kind==="hill"?0:k.r+1.5;if(pp){const big=pp[2].slice().sort((a,b)=>ppArea(b)-ppArea(a))[0];c=k.n==="Bukhansan"?k.c:ppCentre(big);dy=0;}const q=P(c[0],c[1]);lblG.appendChild(el("text",{x:q.x,y:q.y+dy,class:"lbl "+(k.kind==="hill"||(pp&&pp[1]==="wood")?"hilllbl":"parklbl"),"text-anchor":"middle"},k.n));});
+  (B.parkPoly||[]).forEach(p=>{if(seen.has(p[0]))return;const big=p[2].slice().sort((a,b)=>ppArea(b)-ppArea(a))[0];const c=ppCentre(big);const q=P(c[0],c[1]);lblG.appendChild(el("text",{x:q.x,y:q.y,class:"lbl "+(p[1]==="wood"?"hilllbl":"parklbl"),"text-anchor":"middle"},p[0]));});}
 {const q=P(37.5195,126.9655);lblG.appendChild(el("text",{x:q.x,y:q.y,class:"lbl riverlbl","text-anchor":"middle"},"한강 Han River"));}
 const ptsG=el("g");world.appendChild(ptsG);
 // ---- state ----
