@@ -1,3 +1,6 @@
 raw_p*.tsv
 previews/
 node_modules/
+_m_*.png
+_review.png
+_*.png
