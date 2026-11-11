@@ -39,7 +39,7 @@ h1 small{font:400 12px/1 var(--body);color:var(--mute);letter-spacing:0;margin-l
 #map.drag{cursor:grabbing}
 .cityedge{fill:none;stroke:#9d92b3;stroke-width:5;stroke-linejoin:round;vector-effect:non-scaling-stroke}
 .guarea{fill:var(--gu);stroke:var(--gu-line);stroke-width:1;stroke-dasharray:4 3;vector-effect:non-scaling-stroke}
-.hill{fill:var(--hill)}.park{fill:var(--park)}.pp{stroke-width:.8;vector-effect:non-scaling-stroke}.pp.wood{fill:var(--hill);stroke:#c4dab3}.pp.park{fill:var(--park);stroke:#afd398}.pp.palace{fill:#dfe5c6;stroke:#c3cba2}.water{fill:var(--water);stroke:var(--water-line);stroke-width:.6;vector-effect:non-scaling-stroke}
+.hill{fill:var(--hill)}.hillg{fill:url(#hillg)}.park{fill:var(--park)}.pp{stroke-width:.8;vector-effect:non-scaling-stroke}.pp.wood{fill:var(--hill);stroke:#c4dab3}.pp.park{fill:var(--park);stroke:#afd398}.pp.palace{fill:#dfe5c6;stroke:#c3cba2}.water{fill:var(--water);stroke:var(--water-line);stroke-width:.6;vector-effect:non-scaling-stroke}
 .expy{fill:none;stroke-linejoin:round;stroke-linecap:round}.expy.case{stroke:var(--expy-case)}.expy.fill{stroke:var(--expy)}
 .river{fill:none;stroke:var(--water);stroke-linejoin:round;stroke-linecap:round}
 .island{fill:var(--park);stroke:var(--water-line);stroke-width:.6;vector-effect:non-scaling-stroke}
@@ -66,12 +66,12 @@ h1 small{font:400 12px/1 var(--body);color:var(--mute);letter-spacing:0;margin-l
 .lbl.riverlbl{fill:#3572a6;letter-spacing:.12em;stroke:var(--water);font-weight:500}
 
 .pt{cursor:pointer}.pt.clustered{display:none}
-.clu{cursor:pointer}.clu-core{fill:var(--green);stroke:#fff;stroke-width:2}.clu-halo{fill:rgba(3,199,90,.18)}.clu text{font:700 13px var(--body);fill:#fff;pointer-events:none}.clu:focus-visible{outline:none}.clu:focus-visible .clu-core{stroke:#1e1e1e}
+.clu{cursor:pointer}.clu-core{fill:var(--green);stroke:#fff;stroke-width:2.5}.clu-halo{fill:rgba(3,199,90,.2)}.clu text{pointer-events:none}.clu .clu-n{font:700 13px var(--body);fill:#fff}.clu .clu-name{font:700 11.5px var(--body);fill:#1e1e1e;paint-order:stroke;stroke:#fff;stroke-width:3.5px;stroke-linejoin:round}.clu.on .clu-core{fill:var(--green-ink)}.clu.on .clu-halo{fill:rgba(3,199,90,.38)}.clu:focus-visible{outline:none}.clu:focus-visible .clu-core{stroke:#1e1e1e}
 .pt .pin{transform-box:fill-box;transform-origin:50% 100%;transition:transform .15s ease}
 .pt .pinbody{fill:var(--c);stroke:#fff;stroke-width:1.5}
 .pt .pindot{fill:#fff}.pt .pinicon.stroke{fill:none;stroke:#fff;stroke-width:1.15;stroke-linecap:round;stroke-linejoin:round}.pt .pinicon.fill{fill:#fff}.pt .pinicon.mixed{fill:#fff;stroke:#fff;stroke-width:1.1;stroke-linejoin:round}.pt .pinicon.mixed{fill-rule:evenodd}
 .pt .pinshadow{fill:rgba(0,0,0,.18)}
-.pt.hov .pin{transform:scale(1.15)}.pt.hov .pinbody{filter:drop-shadow(0 2px 3px rgba(0,0,0,.25))}
+.pt.hov .pin{transform:scale(1.15)}
 .pt.sel .pin,.pt.sel.hov .pin{transform:scale(1.35)}.pt.sel .pinbody{stroke-width:1.2}
 .pt.dim{pointer-events:none;opacity:.22}
 .pt:focus-visible{outline:none}.pt:focus-visible .pinbody{stroke:#1e1e1e;stroke-width:2}
@@ -80,13 +80,13 @@ h1 small{font:400 12px/1 var(--body);color:var(--mute);letter-spacing:0;margin-l
 .pt .zonearea{fill:color-mix(in srgb,var(--c) 12%,transparent);stroke:var(--c);stroke-width:1.4;stroke-dasharray:4 3}
 .pt circle.core{fill:var(--c);stroke:#fff;stroke-width:1.2}.pt circle.ring{fill:none;stroke:#1e1e1e;stroke-width:1.5;opacity:0}.pt.sel circle.ring{opacity:.9}.pt circle.halo{display:none}
 .pt text{font:700 11.5px var(--body);fill:#1e1e1e;pointer-events:none;paint-order:stroke;stroke:#fff;stroke-width:3.5px;stroke-linejoin:round;letter-spacing:-.2px}
-.pt.sel > text{display:none!important}.callout{pointer-events:none}.co-bg{fill:#fff;filter:drop-shadow(0 1px 3px rgba(0,0,0,.25))}.pt .co-tx{font:700 12.5px var(--body);fill:var(--green-ink);stroke:none}
+.pt.sel > text{display:none!important}.callout{pointer-events:none}.co-bg{fill:#fff;stroke:rgba(0,0,0,.22);stroke-width:1}.pt .co-tx{font:700 12.5px var(--body);fill:var(--green-ink);stroke:none}
 .hint{position:absolute;left:50%;transform:translateX(-50%);top:12px;background:#fff;box-shadow:var(--shadow);color:var(--mute);font-size:12px;padding:6px 12px;border-radius:999px;pointer-events:none}
 .zoom{position:absolute;right:max(12px,env(safe-area-inset-right,0px));top:12px;display:flex;flex-direction:column;background:#fff;border-radius:8px;box-shadow:var(--shadow);overflow:hidden}
 .zoom button{background:#fff;border:0;border-bottom:1px solid var(--line);color:#333;width:38px;height:38px;font:400 20px var(--body);cursor:pointer}.zoom button:last-child{border-bottom:0}
 .zoom button:hover{background:var(--soft)}
 .jeju{position:absolute;left:max(12px,env(safe-area-inset-left,0px));bottom:12px;width:150px;height:96px;background:#dcecf8;border-radius:8px;overflow:hidden;box-shadow:var(--shadow)}
-.jeju .island{fill:var(--land);stroke:var(--water-line);stroke-width:.8}.jeju .jhalla{fill:var(--hill);filter:url(#soft)}.jeju .jhl{fill:var(--hill-ink);font-size:7px}
+.jeju .island{fill:var(--land);stroke:var(--water-line);stroke-width:.8}.jeju .jhalla{fill:url(#hillg)}.jeju .jhl{fill:var(--hill-ink);font-size:7px}
 .jeju.off{display:none}
 .scalebar{position:absolute;left:174px;bottom:14px;display:flex;flex-direction:column;align-items:flex-start;gap:2px;pointer-events:none}.scalebar span{font:700 11px var(--body);color:#333;text-shadow:0 0 3px #fff,0 0 3px #fff}.scalebar i{display:block;height:5px;border:2px solid #333;border-top:0;box-sizing:border-box;background:transparent}
 .jeju.off~.scalebar,.scalebar.solo{left:max(12px,env(safe-area-inset-left,0px))}
@@ -116,6 +116,7 @@ ul.order{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px;l
 .badge{display:inline-block;font:500 12px var(--body);padding:3px 8px;border-radius:5px;background:var(--soft);color:#444}
 .badge.navlink{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;width:100%;box-sizing:border-box;text-decoration:none;font:700 14px var(--body);background:var(--green);color:#fff;border-radius:8px}
 .badge.warn{background:#fff3e0;color:#d9730d}.badge.over{background:#fdecec;color:#d33}
+.backlink{align-self:flex-start;background:none;border:0;padding:0;min-height:32px;color:var(--green-ink);font:500 13px var(--body);cursor:pointer}.areahead{display:flex;flex-direction:column;gap:2px}.areahead h2 small{font:400 15px var(--body);color:var(--mute);margin-left:4px}.ghead{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;min-height:32px}.arow .ko{color:var(--mute);font-weight:400;margin-left:4px}.arow small{color:var(--mute)}
 .empty{color:var(--mute);font-size:13.5px;line-height:1.55}
 .list{display:flex;flex-direction:column}.grp h3{display:flex;justify-content:space-between;margin:10px 0 4px}.grp h3 span{color:var(--faint);font-weight:400;font-variant-numeric:tabular-nums}
 .row{display:grid;grid-template-columns:10px 1fr auto;gap:10px;align-items:center;padding:11px 4px;cursor:pointer;border:0;border-bottom:1px solid var(--line);background:none;color:var(--ink);text-align:left;font:inherit;width:100%}
@@ -190,7 +191,7 @@ form.tag .cancel{background:#fff;border:1px solid var(--line);color:var(--ink);p
 
 <main id="mapwrap" aria-label="Map">
   <svg id="map" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Map of Seoul. Saved places are buttons; arrow keys pan, plus and minus zoom.">
-    <defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.6"/></filter></defs>
+    <defs><radialGradient id="hillg"><stop offset="0.35" stop-color="#d8e8ca"/><stop offset="1" stop-color="#d8e8ca" stop-opacity="0"/></radialGradient></defs>
     <g id="world"></g>
   </svg>
   <div id="hint" class="hint" hidden></div>
@@ -242,7 +243,7 @@ B.guPoly.forEach(g=>base.appendChild(el("path",{d:path(g[2],true),class:"guarea"
 const PP=Object.fromEntries((B.parkPoly||[]).map(p=>[p[0],p]));
 const ppCentre=r=>{let A=0,X=0,Y=0;for(let i=0;i<r.length-1;i++){const [y0,x0]=r[i],[y1,x1]=r[i+1];const k=x0*y1-x1*y0;A+=k;X+=(x0+x1)*k;Y+=(y0+y1)*k;}return A?[Y/(3*A),X/(3*A)]:r[0];};
 const ppArea=r=>{let A=0;for(let i=0;i<r.length-1;i++)A+=r[i][1]*r[i+1][0]-r[i+1][1]*r[i][0];return Math.abs(A);};
-{const hg=el("g",{filter:"url(#soft)"});B.parks.filter(k=>k.kind==="hill"&&!PP[k.n]).forEach(k=>{const q=P(k.c[0],k.c[1]);hg.appendChild(el("circle",{cx:q.x,cy:q.y,r:k.r*0.8,class:"hill"}));});base.appendChild(hg);}
+{const hg=el("g");B.parks.filter(k=>k.kind==="hill"&&!PP[k.n]).forEach(k=>{const q=P(k.c[0],k.c[1]);hg.appendChild(el("circle",{cx:q.x,cy:q.y,r:k.r*1.05,class:"hillg"}));});base.appendChild(hg);}
 ["wood","park","palace"].forEach(kd=>(B.parkPoly||[]).filter(p=>p[1]===kd).forEach(p=>p[2].forEach(r=>base.appendChild(el("path",{d:path(r,true),class:"pp "+kd})))));
 B.parks.filter(k=>!k.kind&&!PP[k.n]).forEach(k=>{const q=P(k.c[0],k.c[1]);base.appendChild(el("circle",{cx:q.x,cy:q.y,r:k.r*0.7,class:"park"}));});
 B.streams.forEach(st=>base.appendChild(el("path",{d:smooth(st.p),class:"stream","stroke-width":1.2})));
@@ -314,35 +315,45 @@ let LINKS=[];          // queue
 let on={eat:1,shop:1,art:1,see:1,tag:1};let Q="";const norm=x=>String(x||"").toLowerCase();
 function matchP(p){if(!Q)return true;return [p.name,p.area,p.addr,p.src&&p.src.acct,...(p.order||[])].some(x=>norm(x).includes(Q));}
 function matchL(l){if(!Q)return true;const f=frameFor(l);return [l.account,l.url,TAGS[l.id]&&TAGS[l.id].name,TAGS[l.id]&&TAGS[l.id].area,f&&f.text,f&&f.places&&f.places.join(" ")].some(x=>norm(x).includes(Q));}
-let sel=null, tab="place";
+let sel=null, tab="place", areaSel=null;
+// broad areas: every place belongs to the nearest centre; the map overview shows one bubble per area
+const ZONES=[{id:"seongsu",n:"Seongsu",ko:"성수",c:[37.5445,127.050]},{id:"gangnam",n:"Gangnam · Apgujeong",ko:"강남",c:[37.512,127.040]},{id:"downtown",n:"Jongno · Myeongdong",ko:"종로",c:[37.570,126.985]},{id:"itaewon",n:"Itaewon · Hannam",ko:"이태원",c:[37.537,127.000]},{id:"jamsil",n:"Jamsil",ko:"잠실",c:[37.512,127.100]},{id:"hongdae",n:"Hongdae · Mangwon",ko:"홍대",c:[37.555,126.918]},{id:"yeouido",n:"Yeouido",ko:"여의도",c:[37.522,126.915]},{id:"jeju",n:"Jeju",ko:"제주",c:[33.38,126.55]}];
+const ZBY=Object.fromEntries(ZONES.map(z=>[z.id,z]));
+function zoneOf(p){if(p.jeju)return "jeju";let best="seongsu",bd=1e9;for(const z of ZONES){if(z.id==="jeju")continue;const d=Math.hypot(p.lat-z.c[0],(p.lng-z.c[1])*KX);if(d<bd){bd=d;best=z.id;}}return best;}
+const shown=p=>(p.tagcat?(on.tag&&on[p.cat]):on[p.cat])&&matchP(p);
+function selectArea(id,opts={}){areaSel=id;sel=null;tab="list";const z=ZBY[id];const ps=allPoints().filter(p=>!p.jeju&&zoneOf(p)===id).map(p=>P(p.lat,p.lng));
+  if(ps.length&&!opts.stay){measure();const x0=Math.min(...ps.map(p=>p.x)),x1=Math.max(...ps.map(p=>p.x)),y0=Math.min(...ps.map(p=>p.y)),y1=Math.max(...ps.map(p=>p.y));const ar=SB.width/Math.max(1,SB.height);
+    let w=Math.max((x1-x0)*1.5,(y1-y0)*1.5*ar,fitW*0.22);w=Math.min(w,fitW*0.58);vb.w=w;vb.h=w/ar;vb.x=(x0+x1)/2-w/2;vb.y=(y0+y1)/2-vb.h/2;}
+  draw();render();$("#panel").scrollTop=0;$("#sr").textContent=z.n+", "+ps.length+" places";try{history.replaceState(null,""," ")}catch(_){}}
 let vb={x:0,y:0,w:240,h:150},fitW=240;const ptr=new Map();
-function fit(){$(".jeju").classList.toggle("off",svg.getBoundingClientRect().height<300);const b=svg.getBoundingClientRect();const ar=b.width/Math.max(1,b.height);const ps=PL.filter(p=>!p.jeju).map(p=>P(p.lat,p.lng));
+function fit(){const b=measure();$(".jeju").classList.toggle("off",b.height<300);const ar=b.width/Math.max(1,b.height);const ps=PL.filter(p=>!p.jeju).map(p=>P(p.lat,p.lng));
   let x0=Math.min(...ps.map(p=>p.x)),x1=Math.max(...ps.map(p=>p.x)),y0=Math.min(...ps.map(p=>p.y)),y1=Math.max(...ps.map(p=>p.y));
   const W=(x1-x0)*1.14,H=(y1-y0)*1.18,cx=(x0+x1)/2,cy=(y0+y1)/2;
   if(W/H>ar){vb.w=W;vb.h=W/ar;}else{vb.h=H;vb.w=H*ar;} vb.x=cx-vb.w/2;vb.y=cy-vb.h/2;fitW=vb.w;apply();}
+let SB={left:0,top:0,width:1,height:1};function measure(){const r=svg.getBoundingClientRect();SB={left:r.left,top:r.top,width:r.width,height:r.height};return SB;}
+try{new ResizeObserver(()=>measure()).observe(svg);}catch(_){}
 let _lblTimer=null;function scheduleLabels(){clearTimeout(_lblTimer);_lblTimer=setTimeout(()=>requestAnimationFrame(placeLabels),ptr.size?120:0);}
 // node lists apply() touches every frame — base layers are static; pins/badges refresh when draw() rebuilds
-let C=null;function cacheNodes(){_styleKey="";C={q0:[...document.querySelectorAll("#map .pt,#map .lbadge")],q1:[...document.querySelectorAll(".lbl.gu")],q2:[...document.querySelectorAll(".lbl.hood")],q3:[...document.querySelectorAll(".lbl.parklbl,.lbl.hilllbl")],q4:[...document.querySelectorAll(".lbl.riverlbl")],q5:[...document.querySelectorAll(".lbl.streamlbl")],q6:[...document.querySelectorAll(".lbl.expylbl")],q7:[...document.querySelectorAll(".lbl.roadname")],q8:[...document.querySelectorAll(".stlbl")],q9:[...document.querySelectorAll(".subway")],q10:[...document.querySelectorAll(".st circle")],q11:[...document.querySelectorAll(".stream")],q12:[...document.querySelectorAll(".lbl,.stlbl")]};}
+let C=null;function cacheNodes(){_styleKey="";_lastS=0;C={q0:[...document.querySelectorAll("#map .pt,#map .lbadge")],q1:[...document.querySelectorAll(".lbl.gu")],q2:[...document.querySelectorAll(".lbl.hood")],q3:[...document.querySelectorAll(".lbl.parklbl,.lbl.hilllbl")],q4:[...document.querySelectorAll(".lbl.riverlbl")],q5:[...document.querySelectorAll(".lbl.streamlbl")],q6:[...document.querySelectorAll(".lbl.expylbl")],q7:[...document.querySelectorAll(".lbl.roadname")],q8:[...document.querySelectorAll(".stlbl")],q9:[...document.querySelectorAll(".subway")],q10:[...document.querySelectorAll(".st circle")],q11:[...document.querySelectorAll(".stream")],q12:[...document.querySelectorAll(".lbl,.stlbl")]};}
 let _styleKey="";
-function apply(){if(!C)cacheNodes();scheduleLabels();svg.setAttribute("viewBox",`${vb.x} ${vb.y} ${vb.w} ${vb.h}`);const s=vb.w/Math.max(1,svg.getBoundingClientRect().width);C.q0.forEach(g=>{g.setAttribute("transform",`translate(${g.dataset.x} ${g.dataset.y}) scale(${s})`)});const z=vb.w<fitW*0.28?2:vb.w<fitW*0.6?1:0;world.setAttribute("class","z"+z);const narrow=svg.getBoundingClientRect().width<560;const key=s.toFixed(6)+"|"+z+"|"+narrow+"|"+C.q12.length;if(key!==_styleKey){_styleKey=key;C.q1.forEach(t=>{t.style.fontSize=((narrow?9:13)*s)+"px";t.style.opacity=narrow?.35:"";});C.q2.forEach(t=>t.style.fontSize=(11*s)+"px");C.q3.forEach(t=>t.style.fontSize=(10*s)+"px");C.q4.forEach(t=>t.style.fontSize=((narrow?11:14)*s)+"px");C.q5.forEach(t=>t.style.fontSize=(10.5*s)+"px");C.q6.forEach(t=>t.style.fontSize=(9.5*s)+"px");C.q7.forEach(t=>t.style.fontSize=(9*s)+"px");C.q8.forEach(t=>t.style.fontSize=(9*s)+"px");const lw=(z===2?3.2:z===1?2.2:1.3)*s;C.q9.forEach(l=>l.style.strokeWidth=lw);C.q10.forEach(c=>{c.setAttribute("r",(c.parentNode.classList.contains("xfer")?4.2:3)*s);c.style.strokeWidth=1.4*s;});C.q11.forEach(l=>l.style.strokeWidth=(z===0?2:3.2)*s);C.q12.forEach(t=>{const small=t.classList.contains("roadname")||t.classList.contains("streamlbl")||t.classList.contains("expylbl")||t.classList.contains("stlbl");t.style.strokeWidth=((small?2:3)*s)+"px";});}cluster(z,s);scaleBar(s);}
+let _settle=null,_lastS=0;
+// apply(true) = moving frame: viewBox + marker sizes only. The full pass (label sizes, bubbles, label placement) runs once, 140 ms after motion stops.
+function apply(light){if(!C)cacheNodes();svg.setAttribute("viewBox",`${vb.x} ${vb.y} ${vb.w} ${vb.h}`);const s=vb.w/Math.max(1,SB.width);
+  if(s!==_lastS){_lastS=s;C.q0.forEach(g=>{g.setAttribute("transform",`translate(${g.dataset.x} ${g.dataset.y}) scale(${s})`)});for(const g of cluG.children)g.setAttribute("transform",`translate(${g.dataset.x} ${g.dataset.y}) scale(${s})`);}
+  clearTimeout(_settle);if(light){_settle=setTimeout(()=>apply(),140);return;}
+  scheduleLabels();const z=vb.w<fitW*0.28?2:vb.w<fitW*0.6?1:0;world.setAttribute("class","z"+z);const narrow=SB.width<560;const key=s.toFixed(6)+"|"+z+"|"+narrow+"|"+C.q12.length;if(key!==_styleKey){_styleKey=key;C.q1.forEach(t=>{t.style.fontSize=((narrow?9:13)*s)+"px";t.style.opacity=narrow?.35:"";});C.q2.forEach(t=>t.style.fontSize=(11*s)+"px");C.q3.forEach(t=>t.style.fontSize=(10*s)+"px");C.q4.forEach(t=>t.style.fontSize=((narrow?11:14)*s)+"px");C.q5.forEach(t=>t.style.fontSize=(10.5*s)+"px");C.q6.forEach(t=>t.style.fontSize=(9.5*s)+"px");C.q7.forEach(t=>t.style.fontSize=(9*s)+"px");C.q8.forEach(t=>t.style.fontSize=(9*s)+"px");const lw=(z===2?3.2:z===1?2.2:1.3)*s;C.q9.forEach(l=>l.style.strokeWidth=lw);C.q10.forEach(c=>{c.setAttribute("r",(c.parentNode.classList.contains("xfer")?4.2:3)*s);c.style.strokeWidth=1.4*s;});C.q11.forEach(l=>l.style.strokeWidth=(z===0?2:3.2)*s);C.q12.forEach(t=>{const small=t.classList.contains("roadname")||t.classList.contains("streamlbl")||t.classList.contains("expylbl")||t.classList.contains("stlbl");t.style.strokeWidth=((small?2:3)*s)+"px";});}cluster(z,s);scaleBar(s);}
 // metres per screen px: 1 map unit ≈ 111.2 m (y = 0.001° lat; x is pre-scaled by cos 37.5°)
 function scaleBar(s){const mpp=s*111.2;const nice=[50,100,200,300,500,1000,2000,3000,5000,10000];let m=nice[0];for(const n of nice)if(n/mpp<=100)m=n;const w=m/mpp;const l=$("#scaleline"),t=$("#scalelbl");if(!l)return;l.style.width=w.toFixed(1)+"px";l.dataset.m=m;t.textContent=m>=1000?(m/1000)+" km":m+" m";$("#scalebar").classList.toggle("solo",$(".jeju").classList.contains("off")||innerWidth<=760);}
-// Naver-style clustering at the overview zoom: greedy groups of pins within 28 px → one count bubble
+// Overview zoom: pins fold into one bubble per broad area (count + name). Tap → that area's list, map zooms to it.
 function cluster(z,s){cluG.replaceChildren();const pins=[...ptsG.querySelectorAll(".pt")];pins.forEach(g=>g.classList.remove("clustered"));if(z>0)return;
-  const b=svg.getBoundingClientRect();const k=b.width/Math.max(1,vb.w);const R=28;
-  const cand=pins.filter(g=>!g.classList.contains("dim")&&!g.classList.contains("sel")&&!g.classList.contains("zone")).map(g=>({g,x:(+g.dataset.x-vb.x)*k,y:(+g.dataset.y-vb.y)*k,used:false}));
-  cand.sort((a,c)=>a.x-c.x);
-  for(const a of cand){if(a.used)continue;const grp=cand.filter(c=>!c.used&&Math.hypot(c.x-a.x,c.y-a.y)<=R);if(grp.length<3)continue;
-    // recentre once so the group is the pins near its middle, not near its first member
-    let use=grp,grew=true;while(grew){grew=false;const mx=use.reduce((t,c)=>t+c.x,0)/use.length,my=use.reduce((t,c)=>t+c.y,0)/use.length; // grow: absorb pins near the centre or touching a member
-      for(const c of cand){if(c.used||use.includes(c))continue;if(Math.hypot(c.x-mx,c.y-my)<=R||use.some(u=>Math.hypot(u.x-c.x,u.y-c.y)<=R*0.7)){use=use.concat([c]);grew=true;}}}
-    use.forEach(c=>{c.used=true;c.g.classList.add("clustered");});
-    const cx=use.reduce((t,c)=>t+(+c.g.dataset.x),0)/use.length,cy=use.reduce((t,c)=>t+(+c.g.dataset.y),0)/use.length;
-    const bub=el("g",{class:"clu",role:"button",tabindex:"0","aria-label":use.length+" places here, zoom in",transform:`translate(${cx.toFixed(2)} ${cy.toFixed(2)}) scale(${s})`,"data-n":use.length});
-    const r=use.length>=10?17:14;bub.appendChild(el("circle",{r:r+5,class:"clu-halo"}));bub.appendChild(el("circle",{r,class:"clu-core"}));bub.appendChild(el("text",{y:4.5,"text-anchor":"middle"},String(use.length)));
-    const go=()=>{const px=b.left+(cx-vb.x)*k,py=b.top+(cy-vb.y)*k;zoomTo(fitW/vb.w*2.6,px,py);};
-    bub.addEventListener("click",e=>{if(moved)return;e.stopPropagation();go();});bub.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go();}});
-    cluG.appendChild(bub);}}
+  const by={};pins.forEach(g=>{if(g.classList.contains("dim"))return;(by[g.dataset.zone]=by[g.dataset.zone]||[]).push(g);if(!g.classList.contains("sel"))g.classList.add("clustered");});
+  ZONES.forEach(zn=>{const use=by[zn.id];if(!use)return;const n=use.length;const cx=use.reduce((t,g)=>t+(+g.dataset.x),0)/n,cy=use.reduce((t,g)=>t+(+g.dataset.y),0)/n;const r=n>=10?19:n>=4?16:13;
+    const nw=tw(zn.n,11.5,"Noto Sans KR, system-ui, sans-serif",700)+8;
+    const bub=el("g",{class:"clu"+(areaSel===zn.id?" on":""),role:"button",tabindex:"0","aria-label":zn.n+", "+n+" place"+(n>1?"s":"")+", show list",transform:`translate(${cx.toFixed(2)} ${cy.toFixed(2)}) scale(${s})`,"data-n":n,"data-x":cx.toFixed(2),"data-y":cy.toFixed(2),"data-zone":zn.id,"data-r":r,"data-w":nw.toFixed(1)});
+    bub.appendChild(el("circle",{r:r+6,class:"clu-halo"}));bub.appendChild(el("circle",{r,class:"clu-core"}));bub.appendChild(el("text",{y:4.5,"text-anchor":"middle",class:"clu-n"},String(n)));const kpx=SB.width/Math.max(1,vb.w),sx=(cx-vb.x)*kpx;let anc="middle",nx=0;if(sx-nw/2<6){anc="start";nx=-Math.min(r,sx-6);}else if(sx+nw/2>SB.width-6){anc="end";nx=Math.min(r,SB.width-6-sx);} /* keep the name inside the map edge */
+    bub.dataset.nx=anc==="middle"?(-nw/2).toFixed(1):anc==="start"?nx.toFixed(1):(nx-nw).toFixed(1);bub.appendChild(el("text",{x:nx,y:r+17,"text-anchor":anc,class:"clu-name"},zn.n));
+    bub.addEventListener("click",e=>{if(moved)return;e.stopPropagation();selectArea(zn.id);});bub.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();selectArea(zn.id);}});
+    cluG.appendChild(bub);});}
 const _mc=document.createElement("canvas").getContext("2d");function tw(txt,px,fam,wt){_mc.font=`${wt||500} ${px}px ${fam}`;return _mc.measureText(txt).width;}
 let hiddenN=0;function placeLabels(){hiddenN=0;const z=vb.w<fitW*0.28?2:vb.w<fitW*0.6?1:0;const b=svg.getBoundingClientRect();const k=b.width/Math.max(1,vb.w);
   const boxes=[];const M=2;const hit=r=>boxes.some(o=>!(r.x+r.w+M<o.x||o.x+o.w+M<r.x||r.y+r.h+M<o.y||o.y+o.h+M<r.y));
@@ -352,7 +363,7 @@ let hiddenN=0;function placeLabels(){hiddenN=0;const z=vb.w<fitW*0.28?2:vb.w<fit
   const pts=[...document.querySelectorAll("#map .pt")].sort((a,c)=>(c.classList.contains("sel")?1:0)-(a.classList.contains("sel")?1:0));
   const pinBox=g=>{const px=(+g.dataset.x-vb.x)*k,py=(+g.dataset.y-vb.y)*k;const sc=g.classList.contains("sel")?1.35:1;return g.classList.contains("zone")?{x:px-4,y:py-4,w:8,h:8}:{x:px-10*sc,y:py-25*sc,w:20*sc,h:26*sc};};
   pts.forEach(g=>{if(!g.classList.contains("dim")&&!g.classList.contains("clustered"))boxes.push(pinBox(g));});{const co=document.querySelector(".pt.sel .callout");if(co){const g=co.parentNode;const px=(+g.dataset.x-vb.x)*k,py=(+g.dataset.y-vb.y)*k;const w=+co.dataset.w,t=+co.dataset.top;boxes.push({x:px-w/2,y:py+t,w,h:-t});}}
-  document.querySelectorAll("#clusters .clu").forEach(c=>{const m=/translate\(([-\d.]+) ([-\d.]+)\)/.exec(c.getAttribute("transform"));if(m){const px=(+m[1]-vb.x)*k,py=(+m[2]-vb.y)*k;boxes.push({x:px-20,y:py-20,w:40,h:40});}}); // reserve every pin first so no label lands on one
+  document.querySelectorAll("#clusters .clu").forEach(c=>{const m=/translate\(([-\d.]+) ([-\d.]+)\)/.exec(c.getAttribute("transform"));if(m){const px=(+m[1]-vb.x)*k,py=(+m[2]-vb.y)*k;const r=+c.dataset.r||16,w=+c.dataset.w||60;boxes.push({x:px-r-6,y:py-r-6,w:2*r+12,h:2*r+12});boxes.push({x:px+(+c.dataset.nx||-w/2),y:py+r+5,w,h:16});}}); // reserve every pin first so no label lands on one
   document.querySelectorAll(".lbadge").forEach(g=>{g.style.display="";if(z===0)return;const px=(+g.dataset.x-vb.x)*k,py=(+g.dataset.y-vb.y)*k;const w=g.querySelector("rect").getAttribute("width")*1+4;const r={x:px-w/2,y:py-10,w,h:20};if(!inView(px,py)||hit(r)){g.style.display="none";}else boxes.push(r);});
   pts.forEach(g=>{const px=(+g.dataset.x-vb.x)*k,py=(+g.dataset.y-vb.y)*k;const dotBox={x:-9999,y:-9999,w:0,h:0};const t=g.querySelector("text");if(!t){return;}if(g.classList.contains("clustered")){t.style.display="none";return;}
     const show=z===2||(z===1&&g.classList.contains("lz1"))||g.classList.contains("sel");if(!show||!inView(px,py)){t.style.display="none";boxes.push(dotBox);return;}
@@ -377,24 +388,24 @@ let hiddenN=0;function placeLabels(){hiddenN=0;const z=vb.w<fitW*0.28?2:vb.w<fit
   document.querySelectorAll(".lbl.parklbl,.lbl.hilllbl").forEach(t=>{if(z===0){t.style.display="none";return;}centred(t,(+t.getAttribute("x")-vb.x)*k,(+t.getAttribute("y")-vb.y)*k,10,4);});
   const hint=$("#hint");if(hint){hint.hidden=!(z>0&&hiddenN>0);hint.textContent=hiddenN+" label"+(hiddenN>1?"s":"")+" hidden · zoom in";}
 }
-function zoom(f,cx,cy){const b=svg.getBoundingClientRect();const px=cx==null?vb.x+vb.w/2:vb.x+(cx-b.left)/b.width*vb.w;const py=cy==null?vb.y+vb.h/2:vb.y+(cy-b.top)/b.height*vb.h;vb.w/=f;vb.h/=f;vb.x=px-(px-vb.x)/f;vb.y=py-(py-vb.y)/f;apply();}
+function zoom(f,cx,cy,light){const b=SB;const px=cx==null?vb.x+vb.w/2:vb.x+(cx-b.left)/b.width*vb.w;const py=cy==null?vb.y+vb.h/2:vb.y+(cy-b.top)/b.height*vb.h;vb.w/=f;vb.h/=f;vb.x=px-(px-vb.x)/f;vb.y=py-(py-vb.y)/f;apply(light);}
 // smooth zoom: same end state as zoom(), eased in log-space; instant under reduced motion
 const RM=matchMedia("(prefers-reduced-motion: reduce)");let _anim=null;window._zoomFrames=0;
-function zoomTo(f,cx,cy){const b=svg.getBoundingClientRect();const px=cx==null?vb.x+vb.w/2:vb.x+(cx-b.left)/b.width*vb.w;const py=cy==null?vb.y+vb.h/2:vb.y+(cy-b.top)/b.height*vb.h;
+function zoomTo(f,cx,cy){const b=SB;const px=cx==null?vb.x+vb.w/2:vb.x+(cx-b.left)/b.width*vb.w;const py=cy==null?vb.y+vb.h/2:vb.y+(cy-b.top)/b.height*vb.h;
   if(_anim){cancelAnimationFrame(_anim.id);Object.assign(vb,_anim.end);}const s0={...vb};const end={w:s0.w/f,h:s0.h/f,x:px-(px-s0.x)/f,y:py-(py-s0.y)/f};
   if(RM.matches){Object.assign(vb,end);apply();return;}const T=220,t0=performance.now();window._zoomFrames=0;
-  const step=now=>{const t=Math.min(1,(now-t0)/T),e=1-Math.pow(1-t,3);const k=Math.pow(f,e);vb.w=s0.w/k;vb.h=s0.h/k;vb.x=px-(px-s0.x)/k;vb.y=py-(py-s0.y)/k;window._zoomFrames++;if(t<1){apply();_anim.id=requestAnimationFrame(step);}else{Object.assign(vb,end);_anim=null;apply();}};
+  const step=now=>{const t=Math.min(1,(now-t0)/T),e=1-Math.pow(1-t,3);const k=Math.pow(f,e);vb.w=s0.w/k;vb.h=s0.h/k;vb.x=px-(px-s0.x)/k;vb.y=py-(py-s0.y)/k;window._zoomFrames++;if(t<1){apply(true);_anim.id=requestAnimationFrame(step);}else{Object.assign(vb,end);_anim=null;apply();}};
   _anim={end,id:requestAnimationFrame(step)};}
 $("#zin").onclick=()=>zoomTo(1.5);$("#zout").onclick=()=>zoomTo(1/1.5);$("#zfit").onclick=fit;
 svg.setAttribute("tabindex","0");svg.addEventListener("keydown",e=>{if(e.target!==svg)return;const st=vb.w*0.08;const k={ArrowLeft:[-st,0],ArrowRight:[st,0],ArrowUp:[0,-st],ArrowDown:[0,st]}[e.key];if(k){vb.x+=k[0];vb.y+=k[1];apply();e.preventDefault();}else if(e.key==="+"||e.key==="="){zoom(1.5);e.preventDefault()}else if(e.key==="-"){zoom(1/1.5);e.preventDefault()}});
 svg.addEventListener("dblclick",e=>{e.preventDefault();zoomTo(2,e.clientX,e.clientY)});
-svg.addEventListener("wheel",e=>{e.preventDefault();zoom(e.deltaY<0?1.2:1/1.2,e.clientX,e.clientY)},{passive:false});
+svg.addEventListener("wheel",e=>{e.preventDefault();zoom(e.deltaY<0?1.2:1/1.2,e.clientX,e.clientY,true)},{passive:false});
 // pan + pinch
 let last=null,moved=false;
-let down=null;svg.addEventListener("pointerdown",e=>{ptr.set(e.pointerId,{x:e.clientX,y:e.clientY});moved=false;down={x:e.clientX,y:e.clientY};if(ptr.size===1){last={x:e.clientX,y:e.clientY};svg.classList.add("drag")}});
-svg.addEventListener("pointermove",e=>{if(!ptr.has(e.pointerId))return;ptr.set(e.pointerId,{x:e.clientX,y:e.clientY});const b=svg.getBoundingClientRect();
-  if(ptr.size===1&&last){const dx=(e.clientX-last.x)/b.width*vb.w,dy=(e.clientY-last.y)/b.height*vb.h;if(down&&!moved&&Math.hypot(e.clientX-down.x,e.clientY-down.y)>8){moved=true;try{svg.setPointerCapture(e.pointerId)}catch(_){}} /* capture only once a drag starts, so plain clicks still reach pins */vb.x-=dx;vb.y-=dy;last={x:e.clientX,y:e.clientY};apply();}
-  else if(ptr.size===2){const [a,c]=[...ptr.values()];const dist=Math.hypot(a.x-c.x,a.y-c.y);if(svg._pd){zoom(dist/svg._pd,(a.x+c.x)/2,(a.y+c.y)/2)}svg._pd=dist;moved=true;}});
+let down=null;svg.addEventListener("pointerdown",e=>{measure();ptr.set(e.pointerId,{x:e.clientX,y:e.clientY});moved=false;down={x:e.clientX,y:e.clientY};if(ptr.size===1){last={x:e.clientX,y:e.clientY};svg.classList.add("drag")}});
+svg.addEventListener("pointermove",e=>{if(!ptr.has(e.pointerId))return;ptr.set(e.pointerId,{x:e.clientX,y:e.clientY});const b=SB;
+  if(ptr.size===1&&last){const dx=(e.clientX-last.x)/b.width*vb.w,dy=(e.clientY-last.y)/b.height*vb.h;if(down&&!moved&&Math.hypot(e.clientX-down.x,e.clientY-down.y)>8){moved=true;try{svg.setPointerCapture(e.pointerId)}catch(_){}} /* capture only once a drag starts, so plain clicks still reach pins */vb.x-=dx;vb.y-=dy;last={x:e.clientX,y:e.clientY};apply(true);}
+  else if(ptr.size===2){const [a,c]=[...ptr.values()];const dist=Math.hypot(a.x-c.x,a.y-c.y);if(svg._pd){zoom(dist/svg._pd,(a.x+c.x)/2,(a.y+c.y)/2,true)}svg._pd=dist;moved=true;}});
 const up=e=>{ptr.delete(e.pointerId);if(ptr.size<2)svg._pd=null;if(!ptr.size){last=null;svg.classList.remove("drag")}};
 svg.addEventListener("pointerup",up);svg.addEventListener("pointercancel",up);svg.addEventListener("lostpointercapture",up);
 // stale-pointer guard: a new single touch after an interrupted gesture starts fresh
@@ -415,7 +426,7 @@ function draw(){ptsG.replaceChildren();const jm=$("#jejumap");jm.replaceChildren
    }
   pts.forEach(p=>{const vis=(p.tagcat?(on.tag&&on[p.cat]):on[p.cat])&&matchP(p);const col=COL[p.cat]||COL.tag;
     if(p.jeju){const jw=jm.clientWidth||120,jh=jm.clientHeight||84;const [x,y]=jxy(p.lat,p.lng,jw,jh);const g=el("g",{class:"pt"+(vis?"":" dim")+(sel===p.id?" sel":"")+(p.tagcat?" mine":""),style:`--c:${col}`,tabindex:vis?"0":"-1",role:"button","aria-label":p.name});g.appendChild(el("circle",{cx:x,cy:y,r:7,class:"halo"}));g.appendChild(el("circle",{cx:x,cy:y,r:2.6,class:"core"}));g.appendChild(el("circle",{cx:x,cy:y,r:5,class:"ring"}));if(jw>=120)g.appendChild(el("text",{x:x+8,y:y+3,class:"jlbl"},p.area.replace("Jeju · ","")));g.onclick=()=>select(p.id);g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();select(p.id);}});jm.appendChild(g);return;}
-    const q=P(p.lat,p.lng);const g=el("g",{class:"pt"+(vis?"":" dim")+(sel===p.id?" sel":"")+(p.ended?" ended":"")+(p.tagcat?" mine":"")+(p.zone?" zone":""),style:`--c:${col}`,"data-x":q.x.toFixed(2),"data-y":q.y.toFixed(2),tabindex:vis?"0":"-1",role:"button","aria-label":p.name});
+    const q=P(p.lat,p.lng);const g=el("g",{class:"pt"+(vis?"":" dim")+(sel===p.id?" sel":"")+(p.ended?" ended":"")+(p.tagcat?" mine":"")+(p.zone?" zone":""),style:`--c:${col}`,"data-x":q.x.toFixed(2),"data-y":q.y.toFixed(2),"data-zone":zoneOf(p),tabindex:vis?"0":"-1",role:"button","aria-label":p.name});
     g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();select(p.id);}});
     if(p.zone){g.appendChild(el("circle",{r:16,class:"zonearea"}));g.appendChild(el("circle",{r:3.6,class:"core"}));}
     else{g.appendChild(el("ellipse",{cx:0,cy:0,rx:4.5,ry:1.6,class:"pinshadow"}));const pin=el("g",{class:"pin"});pin.appendChild(el("path",{d:"M0 0C-1.6-4.2-9-8.2-9-14.6A9 9 0 1 1 9-14.6C9-8.2 1.6-4.2 0 0Z",class:"pinbody"}));const IC=PIN_ICONS[p.tagcat?"tag":p.cat]||PIN_ICONS.tag;const ic=el("path",{d:IC[0],class:"pinicon "+IC[1],"data-kind":p.tagcat?"tag":p.cat});pin.appendChild(ic);g.appendChild(pin);}
@@ -425,17 +436,17 @@ function draw(){ptsG.replaceChildren();const jm=$("#jejumap");jm.replaceChildren
     const co=el("g",{class:"callout"});co.appendChild(el("path",{d:`M${-w/2} ${top}h${w}a6 6 0 0 1 6 6v14a6 6 0 0 1-6 6H6l-6 6-6-6H${-w/2+0}a6 6 0 0 1-6-6v-14a6 6 0 0 1 6-6z`.replace(/H(-?[\d.]+)a6 6 0 0 1-6-6/,(m,x)=>"H"+(-w/2)+"a6 6 0 0 1-6-6"),class:"co-bg"}));
     co.appendChild(el("text",{x:0,y:top+17.5,"text-anchor":"middle",class:"co-tx"},nm));sg.appendChild(co);co.dataset.w=w+12;co.dataset.top=top;}}
   cacheNodes();apply();}
-{const q=$("#q");const qt=$("#qtoggle");qt.hidden=false;const hdr=document.querySelector("header");qt.onclick=()=>{const open=!hdr.classList.contains("searching");hdr.classList.toggle("searching",open);qt.setAttribute("aria-expanded",String(open));qt.textContent=open?"✕":"⌕";if(open)q.focus();else{q.value="";Q="";draw();render();}setTimeout(fit,50);};let t;q.addEventListener("input",()=>{clearTimeout(t);t=setTimeout(()=>{Q=norm(q.value.trim());draw();if(tab==="place"&&Q){tab="list";}render();},120);});q.addEventListener("keydown",e=>{if(e.key==="Escape"){q.value="";Q="";draw();render();svg.focus();}
+{const q=$("#q");const qt=$("#qtoggle");qt.hidden=false;const hdr=document.querySelector("header");qt.onclick=()=>{const open=!hdr.classList.contains("searching");hdr.classList.toggle("searching",open);qt.setAttribute("aria-expanded",String(open));qt.textContent=open?"✕":"⌕";if(open)q.focus();else{q.value="";Q="";draw();render();}setTimeout(fit,50);};let t;q.addEventListener("input",()=>{clearTimeout(t);t=setTimeout(()=>{Q=norm(q.value.trim());if(Q)areaSel=null;draw();if(tab==="place"&&Q){tab="list";}render();},120);});q.addEventListener("keydown",e=>{if(e.key==="Escape"){q.value="";Q="";draw();render();svg.focus();}
   else if(e.key==="Enter"){e.preventDefault();clearTimeout(t);Q=norm(q.value.trim());const hit=allPoints().find(p=>(p.tagcat?(on.tag&&on[p.cat]):on[p.cat])&&matchP(p));if(hit){select(hit.id);centerOn(hit.id);if(vb.w>fitW*0.5)zoomTo(2.2);}}});
 document.addEventListener("keydown",e=>{if(e.key!=="/"||e.metaKey||e.ctrlKey||e.altKey)return;const a=document.activeElement;if(a&&(a.tagName==="INPUT"||a.tagName==="TEXTAREA"||a.tagName==="SELECT"||a.isContentEditable))return;e.preventDefault();if(getComputedStyle(q).display==="none")qt.click();q.focus();q.select();});}
-document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{const k=c.dataset.cat;on[k]=!on[k];c.setAttribute("aria-pressed",String(!!on[k]));draw();if(tab==="list")render();});
+document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{const k=c.dataset.cat;on[k]=!on[k];c.setAttribute("aria-pressed",String(!!on[k]));draw();if(tab==="list"||(tab==="place"&&!sel))render();});
 function select(id,opts={}){sel=id;tab="place";draw();render();$("#panel").scrollTop=0;const p=allPoints().find(x=>x.id===id);if(p)$("#sr").textContent=p.name+", "+p.area;if(!opts.silent&&!id.startsWith("tag:")){try{history.replaceState(null,"","#"+id)}catch(e){}}}
 function fromHash(){const h=(location.hash||"").slice(1);if(!h||!/^[A-Za-z0-9-]+$/.test(h))return false;const p=allPoints().find(x=>x.id===h);if(!p)return false;select(h,{silent:true});centerOn(h);if(vb.w>fitW*0.5)zoom(2.2);return true;}
 window.addEventListener("hashchange",fromHash);
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&sel&&!document.querySelector("#tf")){sel=null;draw();render();try{history.replaceState(null,""," ")}catch(_){}}});
 // ---- panel ----
 const body=$("#pbody");
-document.querySelectorAll(".ptab button[role=tab]").forEach(b=>b.onclick=()=>{tab=b.id.slice(2);render();});
+document.querySelectorAll(".ptab button[role=tab]").forEach(b=>b.onclick=()=>{tab=b.id.slice(2);if(tab==="list")areaSel=null;render();});
 const sb=$("#sheetbtn");sb.hidden=false;sb.onclick=()=>{const a=$("#app");a.classList.toggle("tall");sb.setAttribute("aria-label",a.classList.contains("tall")?"Collapse panel":"Expand panel");setTimeout(fit,260);};
 // swipe on the tab bar
 {let y0=null;const pt=$(".ptab");pt.addEventListener("pointerdown",e=>{y0=e.clientY});pt.addEventListener("pointerup",e=>{if(y0==null)return;const dy=e.clientY-y0;y0=null;if(Math.abs(dy)>24){$("#app").classList.toggle("tall",dy<0);setTimeout(fit,260);}});}
@@ -447,10 +458,11 @@ function esc(s){return String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt
 const DAYS=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 function closedToday(h){if(!h)return null;const d=DAYS[new Date().getDay()];const m=/(?:·|\s)\s*((?:Sun|Mon|Tue|Wed|Thu|Fri|Sat)(?:[–-](?:Sun|Mon|Tue|Wed|Thu|Fri|Sat))?)\s+closed/i.exec(h);if(!m)return null;const r=m[1].split(/[–-]/);if(r.length===1)return r[0]===d;const a=DAYS.indexOf(r[0]),b=DAYS.indexOf(r[1]),i=DAYS.indexOf(d);return a<=b?(i>=a&&i<=b):(i>=a||i<=b);}
 function dateBadge(p){if(!p.until)return"";if(p.ended||p.until<TODAY)return `<span class="badge over">ended ${p.until.slice(5)}</span>`;const days=Math.round((new Date(p.until)-new Date(TODAY))/864e5);return `<span class="badge${days<=7?" warn":""}">${days===0?"last day today":days===1?"ends tomorrow":`through ${p.until.slice(5).replace("-","/")} · ${days}d left`}</span>`;}
+function areaRows(){const all=allPoints().filter(shown);const n={};all.forEach(p=>{const k=zoneOf(p);n[k]=(n[k]||0)+1;});return ZONES.filter(z=>n[z.id]).sort((a,b)=>n[b.id]-n[a.id]).map(z=>`<button class="row arow" data-zone="${z.id}" style="--c:var(--green)"><i></i><span class="n">${esc(z.n)} <span class="ko">${esc(z.ko)}</span></span><small>${n[z.id]} spot${n[z.id]===1?"":"s"} ›</small></button>`).join("");}
 function render(){document.querySelectorAll(".ptab button").forEach(b=>b.setAttribute("aria-selected",String(b.id==="t-"+tab)));
-  if(tab==="place"){const p=allPoints().find(x=>x.id===sel);if(!p){body.innerHTML=`<div class="stat"><div><b>${PL.length}</b> places</div><div><b>${LINKS.filter(l=>(l.platform==="instagram"||l.platform==="tiktok")&&!TAGS[l.id]).length}</b> to tag</div><div><b>${Object.keys(TAGS).length}</b> tagged</div></div><div class="legend"><div style="--c:var(--eat)"><b></b>Eat</div><div style="--c:var(--shop)"><b></b>Shop</div><div style="--c:var(--art)"><b></b>Art / exhibitions</div><div style="--c:var(--see)"><b></b>See / areas (dashed ring = whole area)</div><div style="--c:var(--ink)"><b style="background:transparent;border:2px solid var(--ink);box-sizing:border-box;box-shadow:none"></b>Tagged by you (hollow)</div></div><p class="empty">Tap a pin. Drag to pan, pinch or scroll to zoom. The <b>Queue</b> tab holds every link you emailed yourself that still needs a place.</p>`;return;}
+  if(tab==="place"){const p=allPoints().find(x=>x.id===sel);if(!p){body.innerHTML=`<div class="stat"><div><b>${PL.length}</b> places</div><div><b>${LINKS.filter(l=>(l.platform==="instagram"||l.platform==="tiktok")&&!TAGS[l.id]).length}</b> to tag</div><div><b>${Object.keys(TAGS).length}</b> tagged</div></div><div class="legend"><div style="--c:var(--eat)"><b></b>Eat</div><div style="--c:var(--shop)"><b></b>Shop</div><div style="--c:var(--art)"><b></b>Art / exhibitions</div><div style="--c:var(--see)"><b></b>See / areas (dashed ring = whole area)</div><div style="--c:var(--ink)"><b style="background:transparent;border:2px solid var(--ink);box-sizing:border-box;box-shadow:none"></b>Tagged by you (hollow)</div></div><div><h3>Areas</h3><div class="list">${areaRows()}</div></div><p class="empty">Tap an area bubble on the map, or an area here, to list every spot in it. The <b>Queue</b> tab holds every link you emailed yourself that still needs a place.</p>`;body.querySelectorAll(".arow").forEach(r=>r.onclick=()=>selectArea(r.dataset.zone));return;}
     const col=COL[p.cat]||COL.tag;const kind=({eat:"Eat",shop:"Shop",art:"Art",see:"See"}[p.cat]||"Tagged")+(p.tagcat?" · tagged by you":"")+(p.zone?" · area":"");
-    body.innerHTML=`<div style="--c:${col}"><div class="eyebrow">${kind} · ${esc(p.area)}</div><h2>${esc(p.name)}</h2></div>
+    const pz=ZBY[zoneOf(p)];body.innerHTML=`<button class="backlink" id="toarea">‹ ${esc(pz.n)} · all spots</button><div style="--c:${col}"><div class="eyebrow">${kind} · ${esc(p.area)}</div><h2>${esc(p.name)}</h2></div>
     ${p.until||closedToday(p.hours)?`<div>${dateBadge(p)}${closedToday(p.hours)?` <span class="badge warn">closed today (${DAYS[new Date().getDay()]})</span>`:""}</div>`:""}
     <dl class="kv">${!p.jeju?`<dt class="k-dist">Distance</dt><dd class="dist">${fmtKm(kmFrom(p))} from Gangnam Stn <span class="asof">straight line</span></dd>`:""}${p.addr?`<dt class="k-where">Where</dt><dd>${esc(p.addr)}</dd>`:""}${p.hours?`<dt class="k-hours">Hours</dt><dd>${esc(p.hours)}${p.verified?` <span class="asof">as of ${esc(p.verified.slice(5).replace("-","/"))}</span>`:""}</dd>`:""}</dl>
     ${p.order&&p.order.length?`<div><h3>${p.cat==="eat"?"Order":p.cat==="shop"?"Look for":p.cat==="art"?"Showing":"Do"}</h3>${p.order.length>8?`<div class="pills">${p.order.map(o=>`<span class="pill">${esc(o)}</span>`).join("")}</div>`:`<ul class="order">${p.order.map(o=>`<li>${esc(o)}</li>`).join("")}</ul>`}</div>`:""}
@@ -458,13 +470,17 @@ function render(){document.querySelectorAll(".ptab button").forEach(b=>b.setAttr
     ${fmtSrc(p.src)}
     ${p.addr&&!p.ended?`<a class="badge navlink" target="_blank" rel="noopener" href="https://map.naver.com/p/search/${encodeURIComponent(p.naver||(p.tagcat?p.name+" "+p.area:p.name.split(" — ")[0].split(" (")[0]))}">${p.tagcat?"Search in Naver Map":"Open in Naver Map"} ↗</a>`:""}
     ${p.tagcat?`<button class="tagbtn" id="retag" style="width:max-content">Edit tag</button>`:`<button class="tagbtn" id="copylink" style="width:max-content">Copy link to this place</button>`}`;
-    const cl=$("#copylink");if(cl)cl.onclick=async()=>{const u=location.href.split("#")[0]+"#"+p.id;try{await navigator.clipboard.writeText(u);cl.textContent="Copied";}catch(e){cl.textContent=u;cl.style.userSelect="all";}};
+    $("#toarea").onclick=()=>{areaSel=pz.id;sel=null;tab="list";draw();render();};const cl=$("#copylink");if(cl)cl.onclick=async()=>{const u=location.href.split("#")[0]+"#"+p.id;try{await navigator.clipboard.writeText(u);cl.textContent="Copied";}catch(e){cl.textContent=u;cl.style.userSelect="all";}};
     const rt=$("#retag");if(rt)rt.onclick=()=>{tab="queue";render();openTag(p.id.slice(4));};}
-  else if(tab==="list"){const ps=allPoints().filter(p=>(p.tagcat?(on.tag&&on[p.cat]):on[p.cat])&&matchP(p));
-    const groups={};ps.forEach(p=>{const k=p.jeju?"Jeju":p.area.split(" ·")[0];(groups[k]=groups[k]||[]).push(p);});
+  else if(tab==="list"){const all=allPoints().filter(shown);const ps=areaSel?all.filter(p=>zoneOf(p)===areaSel):all;
+    const groups={};ps.forEach(p=>{const k=zoneOf(p);(groups[k]=groups[k]||[]).push(p);});
     const order=Object.keys(groups).sort((a,b)=>groups[b].length-groups[a].length||a.localeCompare(b));
-    body.innerHTML=`<div class="stat"><div><b>${ps.length}</b> shown${Q?` for “${esc(Q)}”`:""}</div></div>`+(ps.length?"":`<p class="empty">No place matches. Try the Queue tab — untagged links are searched by account and on-screen text.</p>`)+order.map(k=>`<div class="grp"><h3>${esc(k)} <span>${groups[k].length}</span></h3><div class="list">${groups[k].sort((a,b)=>a.cat.localeCompare(b.cat)||a.name.localeCompare(b.name)).map(p=>`<button class="row" data-id="${esc(p.id)}" style="--c:${COL[p.cat]||COL.tag}"><i${p.tagcat?' class="hollow"':""}></i><span class="n">${esc(p.name)}</span><small>${closedToday(p.hours)?"closed today":p.until?(p.ended||p.until<TODAY?"ended":"thru "+p.until.slice(5)):esc(p.area.includes("·")?p.area.split("· ")[1]:"")}</small></button>`).join("")}</div></div>`).join("");
-    body.querySelectorAll(".row").forEach(r=>r.onclick=()=>{select(r.dataset.id);centerOn(r.dataset.id)});}
+    const rowOf=p=>`<button class="row" data-id="${esc(p.id)}" style="--c:${COL[p.cat]||COL.tag}"><i${p.tagcat?' class="hollow"':""}></i><span class="n">${esc(p.name)}</span><small>${closedToday(p.hours)?"closed today":p.until?(p.ended||p.until<TODAY?"ended":"thru "+p.until.slice(5)):esc(p.jeju?p.area.split("· ")[1]||"":p.area===ZBY[zoneOf(p)].n?"":p.area)}</small></button>`;
+    const srt=(a,b)=>a.cat.localeCompare(b.cat)||a.name.localeCompare(b.name);
+    const head=areaSel?`<div class="areahead"><button class="backlink" id="allareas">‹ All areas</button><h2>${esc(ZBY[areaSel].n)} <small>${esc(ZBY[areaSel].ko)}</small></h2></div><div class="stat"><div><b>${ps.length}</b> spot${ps.length===1?"":"s"}${Q?` for “${esc(Q)}”`:""}</div></div>`:`<div class="stat"><div><b>${ps.length}</b> shown${Q?` for “${esc(Q)}”`:""}</div></div>`;
+    body.innerHTML=head+(ps.length?"":`<p class="empty">${areaSel?"Nothing here with the current filters — turn a category chip back on.":"No place matches. Try the Queue tab — untagged links are searched by account and on-screen text."}</p>`)+(areaSel?`<div class="list">${ps.sort(srt).map(rowOf).join("")}</div>`:order.map(k=>`<div class="grp"><h3><button class="ghead" data-zone="${k}">${esc(ZBY[k].n)} ›</button> <span>${groups[k].length}</span></h3><div class="list">${groups[k].sort(srt).map(rowOf).join("")}</div></div>`).join(""));
+    body.querySelectorAll(".row").forEach(r=>r.onclick=()=>{select(r.dataset.id);centerOn(r.dataset.id)});body.querySelectorAll(".ghead").forEach(h=>h.onclick=()=>selectArea(h.dataset.zone));
+    const aa=$("#allareas");if(aa)aa.onclick=()=>{areaSel=null;tab="place";fit();draw();render();};}
   else if(tab==="queue"){const un=LINKS.filter(l=>!TAGS[l.id]&&(l.platform==="instagram"||l.platform==="tiktok")),tg=Object.keys(TAGS);
     body.innerHTML=`<div class="stat"><div><b>${un.length}</b> untagged</div><div><b>${tg.length}</b> tagged</div></div>
     <p class="note intro${dbOk?"":" err"}">Every IG / TikTok link you emailed yourself, newest first (X posts and US shop links are parked under “Not Korea”). Instagram and TikTok block reads from here, so each one needs a name and area from you — ${dbOk?"tap <b>Tag</b>, it saves to this page and shows as a hollow point.":dbState==="error"?"<b>couldn’t reach saved tags</b> — reload to try again.":"<b>only the owner can tag</b> — you can still browse everything here."}</p>
